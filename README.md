@@ -501,9 +501,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact & Support
 
 - **Author**: Your Name
-- **Email**: your.email@example.com
-- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- **Portfolio**: [Your Portfolio Website](https://yourportfolio.com)
+- **Email**: iah.utshox@gmail.com
+- **LinkedIn**: [LinkedIn Profile]([https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/istiaque-ahmed-ish/))
+- **Portfolio**: [Upwork]([https://yourportfolio.com](https://www.upwork.com/freelancers/~018048fec315a2a872))
 
 ---
 
