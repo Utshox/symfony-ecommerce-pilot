@@ -1,314 +1,266 @@
-# TechMart - Modern E-commerce Frontend
+# TechMart – Modern E-commerce Frontend (Symfony Integration Ready)
 
-> A comprehensive e-commerce frontend application built with React, TypeScript, and modern web technologies. This pilot project demonstrates advanced frontend development patterns and serves as a foundation for integration with Symfony PHP backend APIs.
+> TechMart is a modern, production-ready e-commerce frontend implemented in React + TypeScript and structured to integrate seamlessly with a Symfony-based backend API. It demonstrates scalable architecture, clean state management with Zustand, accessibility awareness, performance optimization, and a design-system-driven UI approach.
 
 ![TechMart Preview](https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg)
 
-## 🚀 Live Demo
-
-Experience the application: [View Live Demo](#)
-
-## 📋 Table of Contents
-
+---
+## Table of Contents
 - [Overview](#overview)
-- [Features](#features)
+  - [Key Highlights](#key-highlights)
+- [Feature Overview](#feature-overview)
+  - [Feature Matrix](#feature-matrix)
 - [Technology Stack](#technology-stack)
 - [Architecture](#architecture)
+  - [Component Architecture](#component-architecture)
+  - [State Management Pattern](#state-management-pattern)
+  - [Data Flow](#data-flow)
+  - [Component Patterns](#component-patterns)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Available Scripts](#available-scripts)
+- [Configuration](#configuration)
+  - [Environment Variables](#environment-variables)
 - [API Integration](#api-integration)
+  - [Symfony Backend Endpoints](#symfony-backend-endpoints)
+  - [API Service Example](#api-service-example)
 - [Design System](#design-system)
+  - [Color Palette](#color-palette)
+  - [Typography Scale](#typography-scale)
+  - [Spacing System](#spacing-system)
+  - [Component Variants](#component-variants)
 - [Performance](#performance)
+  - [Optimization Strategies](#optimization-strategies)
+  - [Performance Metrics (Targets)](#performance-metrics-targets)
+  - [Runtime Monitoring](#runtime-monitoring)
 - [Testing Strategy](#testing-strategy)
 - [Deployment](#deployment)
+  - [Build Process](#build-process)
+  - [Deployment Options](#deployment-options)
+  - [Docker Deployment](#docker-deployment)
 - [Contributing](#contributing)
+  - [Development Workflow](#development-workflow)
+  - [Code Standards](#code-standards)
+  - [Pull Request Process](#pull-request-process)
+- [Roadmap](#roadmap)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
+- [Contact & Support](#contact--support)
+- [Notes](#notes)
 
-## 🎯 Overview
-
-TechMart is a modern, responsive e-commerce frontend application designed to showcase best practices in React development. Built as a pilot project, it demonstrates enterprise-level code organization, state management, and user experience design patterns that would integrate seamlessly with a Symfony PHP backend.
+---
+## Overview
+TechMart provides a clean foundation for building a feature-rich storefront. Though this repository currently focuses on the frontend, its structure and service abstractions are intentionally aligned for rapid integration with a Symfony API (e.g. product, cart, auth, and wishlist endpoints). The goal is to offer clarity, maintainability, and extensibility from day one.
 
 ### Key Highlights
+- **Type-Safe**: End-to-end TypeScript usage
+- **Composable State**: Modular Zustand stores
+- **Design System Driven**: Consistent spacing, color, and typography tokens
+- **Performance Conscious**: Code splitting, lazy loading, minimal bundle surface
+- **Accessible Foundations**: Semantic markup patterns + keyboard-friendly UI
+- **Production Practices**: Linting, formatting, conventional commits, scalable structure
 
-- **Production-Ready**: Clean, maintainable code following industry standards
-- **Type-Safe**: Full TypeScript implementation with comprehensive type definitions
-- **Responsive Design**: Mobile-first approach with seamless desktop experience
-- **Performance Optimized**: Lazy loading, code splitting, and optimized bundle size
-- **Accessibility**: WCAG 2.1 compliant with keyboard navigation support
-- **Modern UX**: Smooth animations, micro-interactions, and intuitive user flows
+---
+## Feature Overview
+Core user-facing flows are scaffolded with clean separation of presentation and logic.
 
-## ✨ Features
+### Feature Matrix
+| Domain                | Status | Details |
+|-----------------------|:------:|---------|
+| Product Listing       | ✅     | Filtering, sorting (extensible) |
+| Product Detail        | ✅     | Basic spec display + gallery-ready layout |
+| Cart Management       | ✅     | Quantity updates, totals, persistence layer ready |
+| Wishlist              | ✅     | Client-side (can be persisted server-side later) |
+| Theming (Light/Dark)  | ✅     | Toggle via UI store |
+| Auth Flow             | ⏳     | Service placeholders; UI not finalized |
+| Category Navigation   | ✅     | Modular component patterns |
+| API Abstraction Layer | ✅     | Swappable service class pattern |
+| Accessibility Pass    | ⏳     | Baseline semantics; further audits pending |
+| Testing Coverage      | ⏳     | Example test included; expand planned |
+| Payment Integration   | ⏳     | Stripe key env placeholder; not wired yet |
+| Deployment Config     | ✅     | Docker + environment tokens |
 
-### 🛍️ Core E-commerce Functionality
+Legend: ✅ Implemented  ⏳ Planned / Partial  ❌ Not Started
 
-- **Product Catalog**
-  - Advanced search with real-time filtering
-  - Category-based navigation
-  - Price range filtering
-  - Brand and rating filters
-  - Sort by price, rating, name, and popularity
-
-- **Shopping Cart**
-  - Persistent cart state across sessions
-  - Quantity management with validation
-  - Real-time price calculations
-  - Tax and shipping calculations
-  - Clear cart functionality
-
-- **Product Management**
-  - Detailed product pages with image galleries
-  - Product specifications and features
-  - Stock availability tracking
-  - Related products suggestions
-  - Product reviews and ratings
-
-- **User Experience**
-  - Wishlist functionality
-  - Dark/light theme switching
-  - Responsive design for all devices
-  - Loading states and error handling
-  - Toast notifications for user actions
-
-### 🎨 Design & UI Features
-
-- **Modern Interface**
-  - Clean, minimalist design
-  - Consistent color system and typography
-  - Smooth animations and transitions
-  - Hover effects and micro-interactions
-  - Professional card-based layouts
-
-- **Responsive Design**
-  - Mobile-first approach
-  - Tablet and desktop optimizations
-  - Flexible grid systems
-  - Touch-friendly interactions
-  - Optimized images and assets
-
-## 🛠️ Technology Stack
-
-### Frontend Core
-- **React 18** - Modern React with hooks and concurrent features
-- **TypeScript** - Type safety and enhanced developer experience
-- **Vite** - Fast build tool and development server
-- **React Router DOM** - Client-side routing and navigation
+---
+## Technology Stack
+### Core
+- React 18
+- TypeScript
+- Vite (dev + build)
+- React Router DOM
 
 ### State Management
-- **Zustand** - Lightweight state management with persistence
-- **React Hooks** - Built-in state management for component-level state
+- Zustand (store composition + persistence ready)
+- React Hooks (local component state)
 
 ### Styling & UI
-- **Tailwind CSS** - Utility-first CSS framework
-- **Lucide React** - Modern icon library
-- **CSS Grid & Flexbox** - Advanced layout systems
-- **Custom CSS** - Animations and advanced styling
+- Tailwind CSS (JIT utility engine)
+- Lucide React (icons)
+- CSS Variables for theme primitives
 
-### Development Tools
-- **ESLint** - Code linting and quality enforcement
-- **TypeScript ESLint** - TypeScript-specific linting rules
-- **PostCSS** - CSS processing and optimization
-- **Autoprefixer** - Automatic vendor prefixing
+### Tooling & Quality
+- ESLint (TypeScript rules + best practices)
+- Prettier (consistent formatting)
+- TypeScript strict mode
+- PostCSS + Autoprefixer
 
-### Build & Deployment
-- **Vite Build** - Optimized production builds
-- **Code Splitting** - Automatic bundle optimization
-- **Tree Shaking** - Dead code elimination
-- **Asset Optimization** - Image and resource optimization
+### Build & Optimization
+- Vite production bundling
+- Tree shaking & code splitting
+- Asset optimization pipeline
 
-## 🏗️ Architecture
-
+---
+## Architecture
 ### Component Architecture
-
 ```
 src/
 ├── components/           # Reusable UI components
-│   ├── Layout/          # Layout components (Header, Footer)
-│   ├── Product/         # Product-related components
-│   ├── Home/            # Homepage-specific components
-│   └── UI/              # Generic UI components
-├── pages/               # Page-level components
-├── store/               # State management
-├── types/               # TypeScript type definitions
-├── data/                # Mock data and constants
-└── utils/               # Utility functions
+│   ├── Layout/           # Layout shells (Header, Footer)
+│   ├── Product/          # Product display & interactions
+│   ├── Home/             # Homepage-specific sections
+│   └── UI/               # Pure UI primitives (buttons, etc.)
+├── pages/                # Route-level components
+├── store/                # Zustand store modules
+├── types/                # Global TypeScript types
+├── data/                 # Mock data / constants
+└── utils/                # Generic helpers
 ```
 
 ### State Management Pattern
-
-The application uses Zustand for global state management with the following stores:
-
-- **Cart Store**: Shopping cart state and operations
-- **User Store**: Authentication and user preferences
-- **UI Store**: Theme, search, and filter states
-- **Wishlist Store**: Saved products functionality
+Stores are separated by concern (cart, user/auth, ui, wishlist). Each store exposes pure actions + derived selectors. This keeps components lean and testable.
 
 ### Data Flow
-
 ```
-User Interaction → Component → Store Action → State Update → UI Re-render
+User Action → UI Component → Store Action → State Mutation → Reactive Rerender
 ```
 
 ### Component Patterns
+- Container vs Presentational split where complexity warrants
+- Custom hooks for shared cross-component logic
+- Composition-first design (minimal inheritance)
+- Prop-driven variants & Tailwind utility composition
 
-- **Container/Presentational**: Separation of logic and presentation
-- **Custom Hooks**: Reusable stateful logic
-- **Compound Components**: Complex component composition
-- **Render Props**: Flexible component patterns
-
-## 📁 Project Structure
-
+---
+## Project Structure
 ```
 techmart/
-├── public/                 # Static assets
+├── public/
 ├── src/
 │   ├── components/
 │   │   ├── Layout/
-│   │   │   ├── Header.tsx     # Navigation and search
-│   │   │   └── Footer.tsx     # Site footer with links
 │   │   ├── Product/
-│   │   │   ├── ProductCard.tsx    # Product display card
-│   │   │   ├── ProductGrid.tsx    # Product grid layout
-│   │   │   └── ProductFilters.tsx # Search and filter UI
 │   │   └── Home/
-│   │       ├── Hero.tsx           # Homepage hero section
-│   │       ├── Categories.tsx     # Category navigation
-│   │       └── FeaturedProducts.tsx # Featured products
 │   ├── pages/
-│   │   ├── Home.tsx          # Homepage
-│   │   ├── Products.tsx      # Product catalog
-│   │   ├── ProductDetail.tsx # Individual product page
-│   │   └── Cart.tsx          # Shopping cart
 │   ├── store/
-│   │   └── useStore.ts       # Zustand store configuration
 │   ├── types/
-│   │   └── index.ts          # TypeScript definitions
 │   ├── data/
-│   │   └── products.ts       # Mock product data
 │   └── utils/
-│       └── helpers.ts        # Utility functions
 ├── package.json
 ├── tailwind.config.js
 ├── tsconfig.json
 └── vite.config.ts
 ```
 
-## 🚀 Getting Started
-
+---
+## Getting Started
 ### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn package manager
-- Modern web browser
+- Node.js 18+
+- npm (or yarn / pnpm)
 
 ### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/techmart-frontend.git
-   cd techmart-frontend
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser**
-   ```
-   http://localhost:5173
-   ```
+```bash
+git clone https://github.com/Utshox/symfony-ecommerce-pilot.git
+cd symfony-ecommerce-pilot
+npm install
+npm run dev
+# Open http://localhost:5173
+```
 
 ### Available Scripts
-
 ```bash
 npm run dev          # Start development server
-npm run build        # Build for production
-npm run preview      # Preview production build
+npm run build        # Production build
+npm run preview      # Local preview of build
 npm run lint         # Run ESLint
-npm run type-check   # Run TypeScript compiler
+npm run type-check   # Type-only compilation
 ```
 
-## 🔌 API Integration
-
-### Symfony Backend Integration
-
-This frontend is designed to integrate with a Symfony PHP backend. Here's how to connect the APIs:
-
-#### Product API Endpoints
-
-```typescript
-// Product service integration
-const API_BASE = 'https://your-symfony-api.com/api';
-
-// GET /api/products - Fetch products with filters
-// GET /api/products/{id} - Get single product
-// GET /api/categories - Fetch categories
-// POST /api/cart/add - Add item to cart
-// PUT /api/cart/update - Update cart item
-// DELETE /api/cart/remove - Remove cart item
+---
+## Configuration
+### Environment Variables
+Create a .env (for local) or .env.production for deployments:
+```
+VITE_API_URL=http://localhost:8000/api
+VITE_APP_NAME=TechMart
+VITE_STRIPE_PUBLIC_KEY=pk_test_example_key
 ```
 
-#### Authentication Integration
-
-```typescript
-// User authentication endpoints
-// POST /api/auth/login - User login
-// POST /api/auth/register - User registration
-// POST /api/auth/logout - User logout
-// GET /api/user/profile - Get user profile
+---
+## API Integration
+### Symfony Backend Endpoints
+Intended structure (mirror in your Symfony routes):
+```
+GET    /api/products
+GET    /api/products/{id}
+GET    /api/categories
+POST   /api/cart/add
+PUT    /api/cart/update
+DELETE /api/cart/remove
+POST   /api/auth/login
+POST   /api/auth/register
+POST   /api/auth/logout
+GET    /api/user/profile
 ```
 
-#### Example API Service
-
+### API Service Example
 ```typescript
-// services/api.ts
+// src/services/api.ts
 export class ApiService {
-  private baseUrl = process.env.VITE_API_URL;
+  constructor(private baseUrl = import.meta.env.VITE_API_URL) {}
 
-  async getProducts(filters?: ProductFilters) {
-    const response = await fetch(`${this.baseUrl}/products`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    });
-    return response.json();
+  async getProducts(params?: Record<string, string | number>) {
+    const qs = params ? '?' + new URLSearchParams(
+      Object.entries(params).map(([k, v]) => [k, String(v)])
+    ) : '';
+    const res = await fetch(`${this.baseUrl}/products${qs}`);
+    if (!res.ok) throw new Error('Failed to fetch products');
+    return res.json();
+  }
+
+  async getProduct(id: string) {
+    const res = await fetch(`${this.baseUrl}/products/${id}`);
+    if (!res.ok) throw new Error('Product not found');
+    return res.json();
   }
 
   async addToCart(productId: string, quantity: number) {
-    const response = await fetch(`${this.baseUrl}/cart/add`, {
+    const res = await fetch(`${this.baseUrl}/cart/add`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ productId, quantity }),
+      body: JSON.stringify({ productId, quantity })
     });
-    return response.json();
+    if (!res.ok) throw new Error('Failed to add to cart');
+    return res.json();
   }
 }
 ```
 
-## 🎨 Design System
-
+---
+## Design System
 ### Color Palette
-
 ```css
-/* Primary Colors */
 --blue-50: #eff6ff;
 --blue-500: #3b82f6;
 --blue-600: #2563eb;
 --blue-700: #1d4ed8;
-
-/* Secondary Colors */
 --purple-500: #8b5cf6;
 --purple-600: #7c3aed;
-
-/* Accent Colors */
 --green-500: #10b981;
 --red-500: #ef4444;
 --yellow-500: #f59e0b;
-
-/* Neutral Colors */
 --gray-50: #f9fafb;
 --gray-100: #f3f4f6;
 --gray-500: #6b7280;
@@ -316,142 +268,96 @@ export class ApiService {
 ```
 
 ### Typography Scale
-
 ```css
-/* Font Sizes */
---text-xs: 0.75rem;    /* 12px */
---text-sm: 0.875rem;   /* 14px */
---text-base: 1rem;     /* 16px */
---text-lg: 1.125rem;   /* 18px */
---text-xl: 1.25rem;    /* 20px */
---text-2xl: 1.5rem;    /* 24px */
---text-3xl: 1.875rem;  /* 30px */
---text-4xl: 2.25rem;   /* 36px */
+--text-xs: 0.75rem;   /* 12px */
+--text-sm: 0.875rem;  /* 14px */
+--text-base: 1rem;    /* 16px */
+--text-lg: 1.125rem;  /* 18px */
+--text-xl: 1.25rem;   /* 20px */
+--text-2xl: 1.5rem;   /* 24px */
+--text-3xl: 1.875rem; /* 30px */
+--text-4xl: 2.25rem;  /* 36px */
 ```
 
 ### Spacing System
-
-Based on 8px grid system:
-- `4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px, 48px, 64px`
+4, 8, 12, 16, 20, 24, 32, 40, 48, 64 (8px baseline + a few in-between values)
 
 ### Component Variants
-
 ```typescript
-// Button variants
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
-
-// Card variants  
 type CardVariant = 'default' | 'featured' | 'compact';
-
-// Input variants
 type InputVariant = 'default' | 'error' | 'success';
 ```
 
-## ⚡ Performance
-
+---
+## Performance
 ### Optimization Strategies
+- Route-based code splitting
+- Lazy loading (components & images)
+- Tree shaking (unused exports removed by bundler)
+- Asset minimization (Vite + esbuild pipeline)
+- Lean state layer (no over-fetching)
 
-- **Code Splitting**: Automatic route-based splitting
-- **Lazy Loading**: Components and images loaded on demand
-- **Bundle Analysis**: Webpack bundle analyzer integration
-- **Image Optimization**: WebP format with fallbacks
-- **Caching**: Service worker for offline functionality
+### Performance Metrics (Targets)
+- First Contentful Paint: < 1.5s
+- Largest Contentful Paint: < 2.5s
+- Time To Interactive: < 3.5s
+- Cumulative Layout Shift: < 0.1
 
-### Performance Metrics
-
-- **First Contentful Paint**: < 1.5s
-- **Largest Contentful Paint**: < 2.5s
-- **Time to Interactive**: < 3.5s
-- **Cumulative Layout Shift**: < 0.1
-
-### Monitoring
-
+### Runtime Monitoring
 ```typescript
-// Performance monitoring setup
 import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
-
-getCLS(console.log);
-getFID(console.log);
-getFCP(console.log);
-getLCP(console.log);
-getTTFB(console.log);
+[getCLS, getFID, getFCP, getLCP, getTTFB].forEach(fn => fn(console.log));
 ```
 
-## 🧪 Testing Strategy
+---
+## Testing Strategy
+### Layers
+1. Unit: Pure functions & isolated component logic
+2. Integration: Component interaction + store coordination
+3. E2E (planned): Critical user paths (add to cart, view product, etc.)
 
-### Testing Pyramid
-
-1. **Unit Tests**: Component logic and utilities
-2. **Integration Tests**: Component interactions
-3. **E2E Tests**: User workflows and scenarios
-
-### Recommended Testing Tools
-
+### Tooling
+Install test stack:
 ```bash
-# Install testing dependencies
 npm install --save-dev @testing-library/react @testing-library/jest-dom vitest jsdom
 ```
 
-### Example Test Structure
-
+### Example
 ```typescript
-// ProductCard.test.tsx
 import { render, screen } from '@testing-library/react';
 import { ProductCard } from './ProductCard';
 
 describe('ProductCard', () => {
-  it('displays product information correctly', () => {
-    const mockProduct = {
-      id: '1',
-      name: 'Test Product',
-      price: 99.99,
-      // ... other properties
-    };
-
-    render(<ProductCard product={mockProduct} />);
-    
+  it('renders product data', () => {
+    const product = { id: '1', name: 'Test Product', price: 99.99 };
+    render(<ProductCard product={product} />);
     expect(screen.getByText('Test Product')).toBeInTheDocument();
     expect(screen.getByText('$99.99')).toBeInTheDocument();
   });
 });
 ```
 
-## 🚀 Deployment
-
+---
+## Deployment
 ### Build Process
-
 ```bash
-# Production build
 npm run build
-
-# Preview build locally
 npm run preview
 ```
 
 ### Deployment Options
-
-1. **Netlify**: Automatic deployments from Git
-2. **Vercel**: Zero-config deployments
-3. **AWS S3 + CloudFront**: Scalable static hosting
-4. **Docker**: Containerized deployment
-
-### Environment Variables
-
-```bash
-# .env.production
-VITE_API_URL=https://your-symfony-api.com/api
-VITE_APP_NAME=TechMart
-VITE_STRIPE_PUBLIC_KEY=pk_live_...
-```
+- Netlify (connect repo → auto deploy)
+- Vercel (instant preview envs)
+- AWS S3 + CloudFront (static distribution)
+- Docker + Nginx (containerized delivery)
 
 ### Docker Deployment
-
 ```dockerfile
-# Dockerfile
-FROM node:18-alpine as build
+FROM node:18-alpine AS build
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
 COPY . .
 RUN npm run build
 
@@ -461,52 +367,61 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-## 🤝 Contributing
-
+---
+## Contributing
 ### Development Workflow
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. Fork repository
+2. Create branch: `feat/<short-description>`
+3. Commit changes: `feat: add product sorting` (Conventional Commits)
+4. Push & open Pull Request
 
 ### Code Standards
-
-- **TypeScript**: Strict mode enabled
-- **ESLint**: Airbnb configuration
-- **Prettier**: Code formatting
-- **Conventional Commits**: Commit message format
+- TypeScript strict
+- ESLint + Prettier
+- Small, focused components
+- Avoid unnecessary re-renders (selector usage with Zustand)
 
 ### Pull Request Process
-
-1. Update documentation for any new features
-2. Add tests for new functionality
-3. Ensure all tests pass
-4. Update CHANGELOG.md
-5. Request review from maintainers
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **React Team** - For the amazing framework
-- **Tailwind CSS** - For the utility-first CSS framework
-- **Lucide** - For the beautiful icon library
-- **Pexels** - For the high-quality stock images
-- **Vite Team** - For the lightning-fast build tool
-
-## 📞 Contact & Support
-
-- **Author**: Your Name
-- **Email**: iah.utshox@gmail.com
-- **LinkedIn**: [LinkedIn Profile]([https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/istiaque-ahmed-ish/))
-- **Portfolio**: [Upwork]([https://yourportfolio.com](https://www.upwork.com/freelancers/~018048fec315a2a872))
+1. Update docs if feature-facing
+2. Add / adjust tests
+3. Ensure `npm run lint` & `npm run build` succeed
+4. Request review
 
 ---
+## Roadmap
+| Item | Status | Notes |
+|------|--------|-------|
+| Auth UI (login/register) | Planned | Awaiting backend endpoints |
+| Server-Side Wishlist | Planned | Persist to user profile |
+| Product Reviews Module | Planned | Requires backend schema |
+| Stripe Checkout Flow | Planned | Integrate PaymentIntent API |
+| Playwright E2E Tests | Planned | After auth & cart stable |
+| Lighthouse CI Workflow | Planned | Performance regression gate |
 
-**Built with ❤️ using React, TypeScript, and modern web technologies**
+---
+## License
+MIT. See [LICENSE](LICENSE).
 
-> This pilot project demonstrates enterprise-level frontend development practices and serves as a foundation for building scalable e-commerce applications with Symfony PHP backends.
+---
+## Acknowledgments
+- React Team
+- Tailwind CSS
+- Lucide Icons
+- Pexels (imagery)
+- Vite Team
+
+---
+## Contact & Support
+- **Author**: Istiaque Ahmed
+- **Email**: iah.utshox@gmail.com
+- **LinkedIn**: https://www.linkedin.com/in/istiaque-ahmed-ish/
+- **Upwork**: https://www.upwork.com/freelancers/~018048fec315a2a872
+- **GitHub**: https://github.com/Utshox
+
+---
+## Notes
+This repository currently focuses on the frontend portion of a potential Symfony-powered e-commerce platform. For multi-repo clarity consider:
+- `symfony-ecommerce-api` (backend)
+- `symfony-ecommerce-frontend` (this project)
+
+> Built with ❤️ using React, TypeScript, and modern web architecture patterns.
